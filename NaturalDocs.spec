@@ -26,10 +26,10 @@ and high-quality generated output.
 Natural Docs jest ³atwo rozszerzalnym, wielojêzykowym generatorem
 dokumentacji o otwartym kodzie ¼ród³owym. Wyci±ga on odpowiednio
 sformatowane komentarze z kodu ¼ród³owego i tworzy z nich dokumentacjê
-w postaci HTML. Sk³adnia jest przezroczysta, wiêc komentarze wewn±trz
-kodu ¼ród³owego s± równie ³atwe do przeczytania jak i wygenerowana
-dokumentacja. Natural Docs koncentruje siê tak¿e na wysokiej jako¶ci
-wygenerowanej dokumentacji.
+w postaci HTML-u. Sk³adnia jest przezroczysta, wiêc komentarze
+wewn±trz kodu ¼ród³owego s± równie ³atwe do przeczytania jak i
+wygenerowana dokumentacja. Natural Docs koncentruje siê tak¿e na
+wysokiej jako¶ci wygenerowanej dokumentacji.
 
 %prep
 %setup -q -c
