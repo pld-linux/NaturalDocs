@@ -2,16 +2,17 @@
 Summary:	Multi-language documentation generator
 Summary(pl):	Wielojêzykowy generator dokumentacji
 Name:		NaturalDocs
-Version:	1.22
+Version:	1.31
 Release:	1
 License:	GPL
 Group:		Applications
 Source0:	http://dl.sourceforge.net/naturaldocs/%{name}-%{version}.zip
-# Source0-md5:	6ba12724373ce4ce3ffcd4234d4a147e
+# Source0-md5:	5a558578674e72d790c1d2223f40d6d5
 Patch0:		%{name}-path.patch
 URL:		http://www.naturaldocs.org/
 BuildRequires:	perl-modules >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
+BuildRequires:	unzip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
