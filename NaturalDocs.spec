@@ -10,7 +10,8 @@ Source0:	http://dl.sourceforge.net/naturaldocs/%{name}-%{version}.zip
 # Source0-md5:	7c1a8aac0e239223e4e30e67b224eb99
 Patch0:		%{name}-path.patch
 URL:		http://www.naturaldocs.org/
-BuildRequires:	perl-modules
+BuildRequires:	perl-modules >= 1:5.8.0
+BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
