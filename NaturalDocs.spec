@@ -38,7 +38,7 @@ wysokiej jako¶ci wygenerowanej dokumentacji.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_datadir}/%{name},%{_datadir}/%{name}/Config,%{_bindir},%{perl_vendorlib}}
+install -d $RPM_BUILD_ROOT{%{_datadir}/%{name}/Config,%{_bindir},%{perl_vendorlib}}
 
 mv Modules/%{name} $RPM_BUILD_ROOT%{perl_vendorlib}
 mv Styles $RPM_BUILD_ROOT%{_datadir}/%{name}
