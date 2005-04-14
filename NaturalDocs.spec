@@ -2,12 +2,12 @@
 Summary:	Multi-language documentation generator
 Summary(pl):	Wielojêzykowy generator dokumentacji
 Name:		NaturalDocs
-Version:	1.31
+Version:	1.35
 Release:	1
 License:	GPL
 Group:		Applications
 Source0:	http://dl.sourceforge.net/naturaldocs/%{name}-%{version}.zip
-# Source0-md5:	5a558578674e72d790c1d2223f40d6d5
+# Source0-md5:	9d3aacda69cb2f94784ac95548e210b5
 Patch0:		%{name}-path.patch
 URL:		http://www.naturaldocs.org/
 BuildRequires:	perl-modules >= 1:5.8.0
@@ -36,14 +36,13 @@ wysokiej jako¶ci wygenerowanej dokumentacji.
 %setup -q -c
 %patch0 -p1
 
-%build
-
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_datadir}/%{name},%{_bindir},%{perl_vendorlib}}
+install -d $RPM_BUILD_ROOT{%{_datadir}/%{name},%{_datadir}/%{name}/Config,%{_bindir},%{perl_vendorlib}}
 
 mv Modules/%{name} $RPM_BUILD_ROOT%{perl_vendorlib}
 mv Styles $RPM_BUILD_ROOT%{_datadir}/%{name}
+install Config/*.txt $RPM_BUILD_ROOT%{_datadir}/%{name}/Config
 install %{name} $RPM_BUILD_ROOT%{_bindir}
 
 %clean
@@ -51,7 +50,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CSSGuide.txt NDMarkup.txt Help/*
+%doc Info/CSSGuide.txt Info/NDMarkup.txt Help/*
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
 %{perl_vendorlib}/%{name}
