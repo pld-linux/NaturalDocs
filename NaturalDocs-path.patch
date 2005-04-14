@@ -1,43 +1,33 @@
-diff -uNr NaturalDocs-1.16.org/Modules/NaturalDocs/Settings.pm NaturalDocs-1.16/Modules/NaturalDocs/Settings.pm
---- NaturalDocs-1.16.org/Modules/NaturalDocs/Settings.pm	2004-01-20 17:53:22.000000000 +0100
-+++ NaturalDocs-1.16/Modules/NaturalDocs/Settings.pm	2004-01-25 00:29:39.000000000 +0100
-@@ -357,7 +357,7 @@
+--- NaturalDocs-1.35/Modules/NaturalDocs/Settings.pm.orig	2005-04-14 18:22:22.000000000 +0200
++++ NaturalDocs-1.35/Modules/NaturalDocs/Settings.pm	2005-04-14 18:23:06.000000000 +0200
+@@ -475,17 +475,17 @@
  # Function: StyleDirectory
  # Returns the main style directory.
  sub StyleDirectory
 -    {  return NaturalDocs::File->JoinPaths($FindBin::RealBin, 'Styles', 1);  };
 +    {  return NaturalDocs::File->JoinPaths('/usr/share/NaturalDocs', 'Styles', 1);  };
  
- # Function: TabLength
- # Returns the number of spaces tabs should be expanded to.
-diff -uNr NaturalDocs-1.16.org/NaturalDocs NaturalDocs-1.16/NaturalDocs
---- NaturalDocs-1.16.org/NaturalDocs	2004-01-22 23:00:16.000000000 +0100
-+++ NaturalDocs-1.16/NaturalDocs	2004-01-25 00:31:58.000000000 +0100
-@@ -3,7 +3,6 @@
- use 5.005;  # When File::Spec was included by default
+ # Function: JavaScriptDirectory
+ # Returns the main JavaScript directory.
+ sub JavaScriptDirectory
+-    {  return NaturalDocs::File->JoinPaths($FindBin::RealBin, 'JavaScript', 1);  };
++    {  return NaturalDocs::File->JoinPaths('/usr/share/NaturalDocs', 'JavaScript', 1);  };
+ 
+ # Function: ConfigDirectory
+ # Returns the main configuration directory.
+ sub ConfigDirectory
+-    {  return NaturalDocs::File->JoinPaths($FindBin::RealBin, 'Config', 1);  };
++    {  return NaturalDocs::File->JoinPaths('/usr/share/NaturalDocs', 'Config', 1);  };
+ 
+ # Function: DocumentedOnly
+ # Returns whether undocumented code aspects should be included in the output.
+--- NaturalDocs-1.35/NaturalDocs.orig	2005-04-14 18:24:35.000000000 +0200
++++ NaturalDocs-1.35/NaturalDocs	2005-04-14 18:24:55.000000000 +0200
+@@ -66,7 +66,6 @@
+ use English '-no_match_vars';
  
  use FindBin;
 -use lib "$FindBin::RealBin/Modules";
  
  sub INIT
      {
-@@ -368,7 +367,7 @@
- sub UseDirectory #(directory, directory, directory ...)
-     {
-     my $extraPath = NaturalDocs::File->JoinDirectories(@_);
--    my $fullPath = NaturalDocs::File->JoinPaths($FindBin::RealBin, $extraPath, 1);
-+    my $fullPath = NaturalDocs::File->JoinPaths('/usr/share/perl5/vendor_perl', $extraPath, 1);
- 
-     my @directories = ( $fullPath );
- 
-@@ -435,8 +434,8 @@
- 
- BEGIN {
- 
--    UseDirectory( 'Modules', 'NaturalDocs', 'Builder' );
--    UseDirectory( 'Modules', 'NaturalDocs', 'Extensions' );
-+    UseDirectory( 'NaturalDocs', 'Builder' );
-+    UseDirectory( 'NaturalDocs', 'Extensions' );
- 
-     };
- 
