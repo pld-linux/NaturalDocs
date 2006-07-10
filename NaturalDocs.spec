@@ -3,7 +3,7 @@ Summary:	Multi-language documentation generator
 Summary(pl):	Wielojêzykowy generator dokumentacji
 Name:		NaturalDocs
 Version:	1.35
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications
 Source0:	http://dl.sourceforge.net/naturaldocs/%{name}-%{version}.zip
@@ -38,11 +38,12 @@ wysokiej jako¶ci wygenerowanej dokumentacji.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_datadir}/%{name}/Config,%{_bindir},%{perl_vendorlib}}
+install -d $RPM_BUILD_ROOT{%{_datadir}/%{name}/{Config,JavaScript},%{_bindir},%{perl_vendorlib}}
 
 mv Modules/%{name} $RPM_BUILD_ROOT%{perl_vendorlib}
 mv Styles $RPM_BUILD_ROOT%{_datadir}/%{name}
 install Config/*.txt $RPM_BUILD_ROOT%{_datadir}/%{name}/Config
+install JavaScript/*.js $RPM_BUILD_ROOT%{_datadir}/%{name}/JavaScript
 install %{name} $RPM_BUILD_ROOT%{_bindir}
 
 %clean
