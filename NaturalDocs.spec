@@ -1,6 +1,6 @@
 %include	/usr/lib/rpm/macros.perl
 Summary:	Multi-language documentation generator
-Summary(pl):	Wielojêzykowy generator dokumentacji
+Summary(pl.UTF-8):   WielojÄ™zykowy generator dokumentacji
 Name:		NaturalDocs
 Version:	1.35
 Release:	2
@@ -23,14 +23,14 @@ transparent so that the comments in the source code read just as
 easily as the generated documentation. It also focuses on automation
 and high-quality generated output.
 
-%description -l pl
-Natural Docs jest ³atwo rozszerzalnym, wielojêzykowym generatorem
-dokumentacji o otwartym kodzie ¼ród³owym. Wyci±ga on odpowiednio
-sformatowane komentarze z kodu ¼ród³owego i tworzy z nich dokumentacjê
-w postaci HTML-u. Sk³adnia jest przezroczysta, wiêc komentarze
-wewn±trz kodu ¼ród³owego s± równie ³atwe do przeczytania jak i
-wygenerowana dokumentacja. Natural Docs koncentruje siê tak¿e na
-wysokiej jako¶ci wygenerowanej dokumentacji.
+%description -l pl.UTF-8
+Natural Docs jest Å‚atwo rozszerzalnym, wielojÄ™zykowym generatorem
+dokumentacji o otwartym kodzie ÅºrÃ³dÅ‚owym. WyciÄ…ga on odpowiednio
+sformatowane komentarze z kodu ÅºrÃ³dÅ‚owego i tworzy z nich dokumentacjÄ™
+w postaci HTML-u. SkÅ‚adnia jest przezroczysta, wiÄ™c komentarze
+wewnÄ…trz kodu ÅºrÃ³dÅ‚owego sÄ… rÃ³wnie Å‚atwe do przeczytania jak i
+wygenerowana dokumentacja. Natural Docs koncentruje siÄ™ takÅ¼e na
+wysokiej jakoÅ›ci wygenerowanej dokumentacji.
 
 %prep
 %setup -q -c
