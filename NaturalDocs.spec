@@ -1,18 +1,21 @@
 %include	/usr/lib/rpm/macros.perl
+%define		ver		1.4
 Summary:	Multi-language documentation generator
 Summary(pl.UTF-8):	Wielojęzykowy generator dokumentacji
 Name:		NaturalDocs
-Version:	1.35
-Release:	2
+Version:	1.40
+Release:	1
 License:	GPL
 Group:		Applications
-Source0:	http://dl.sourceforge.net/naturaldocs/%{name}-%{version}.zip
-# Source0-md5:	9d3aacda69cb2f94784ac95548e210b5
+Source0:	http://downloads.sourceforge.net/naturaldocs/%{name}-%{ver}.zip
+# Source0-md5:	05a9a2a392bd3d6d44d1576e624ba74a
 Patch0:		%{name}-path.patch
 URL:		http://www.naturaldocs.org/
+BuildRequires:	iconv
 BuildRequires:	perl-modules >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	unzip
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -34,17 +37,22 @@ wysokiej jakości wygenerowanej dokumentacji.
 
 %prep
 %setup -q -c
-%patch0 -p1
+%patch0 -p0
+
+# And one non-UTF8 one
+iconv -f ISO-8859-1 -t UTF-8 Help/example/Default.css > Help/example/Default.css.utf8
+touch --reference Help/example/Default.css Help/example/Default.css.utf8
+mv Help/example/Default.css.utf8 Help/example/Default.css
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_datadir}/%{name}/{Config,JavaScript},%{_bindir},%{perl_vendorlib}}
+install -d $RPM_BUILD_ROOT{%{_sysconfdir}/%{name},%{_datadir}/%{name}/JavaScript,%{_bindir},%{perl_vendorlib}}
 
 mv Modules/%{name} $RPM_BUILD_ROOT%{perl_vendorlib}
 mv Styles $RPM_BUILD_ROOT%{_datadir}/%{name}
-install Config/*.txt $RPM_BUILD_ROOT%{_datadir}/%{name}/Config
-install JavaScript/*.js $RPM_BUILD_ROOT%{_datadir}/%{name}/JavaScript
-install %{name} $RPM_BUILD_ROOT%{_bindir}
+cp -a Config/*.txt $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
+cp -a JavaScript/*.js $RPM_BUILD_ROOT%{_datadir}/%{name}/JavaScript
+install -p %{name} $RPM_BUILD_ROOT%{_bindir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -52,6 +60,9 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc Info/CSSGuide.txt Info/NDMarkup.txt Help/*
-%attr(755,root,root) %{_bindir}/*
+%dir %{_sysconfdir}/%{name}
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/Languages.txt
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/Topics.txt
+%attr(755,root,root) %{_bindir}/NaturalDocs
 %{_datadir}/%{name}
 %{perl_vendorlib}/%{name}

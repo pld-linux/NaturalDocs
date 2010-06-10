@@ -1,33 +1,39 @@
---- NaturalDocs-1.35/Modules/NaturalDocs/Settings.pm.orig	2005-04-14 18:22:22.000000000 +0200
-+++ NaturalDocs-1.35/Modules/NaturalDocs/Settings.pm	2005-04-14 18:23:06.000000000 +0200
-@@ -475,17 +475,17 @@
+Use FHS-compliant system paths.
+
+Lubomir Rintel <lkundrak@v3.sk>
+
+--- NaturalDocs.orig	2008-07-04 12:43:45.000000000 +0200
++++ NaturalDocs	2008-07-04 12:43:53.000000000 +0200
+@@ -65,9 +65,6 @@ use 5.005;  # When File::Spec was includ
+ 
+ use English '-no_match_vars';
+ 
+-use FindBin;
+-use lib "$FindBin::RealBin/Modules";
+-
+ sub INIT
+     {
+     # This function is just here so that when I start the debugger, it doesn't open a new file.  Normally it would jump to an INIT
+--- Modules/NaturalDocs/Settings.pm.orig	2008-07-04 12:41:59.000000000 +0200
++++ Modules/NaturalDocs/Settings.pm	2008-07-04 12:43:24.000000000 +0200
+@@ -617,17 +617,17 @@ sub ProjectDataDirectory
  # Function: StyleDirectory
  # Returns the main style directory.
  sub StyleDirectory
 -    {  return NaturalDocs::File->JoinPaths($FindBin::RealBin, 'Styles', 1);  };
-+    {  return NaturalDocs::File->JoinPaths('/usr/share/NaturalDocs', 'Styles', 1);  };
++    {  return '/usr/share/NaturalDocs/Styles';  };
  
  # Function: JavaScriptDirectory
  # Returns the main JavaScript directory.
  sub JavaScriptDirectory
 -    {  return NaturalDocs::File->JoinPaths($FindBin::RealBin, 'JavaScript', 1);  };
-+    {  return NaturalDocs::File->JoinPaths('/usr/share/NaturalDocs', 'JavaScript', 1);  };
++    {  return  '/usr/share/NaturalDocs/JavaScript'; };
  
  # Function: ConfigDirectory
  # Returns the main configuration directory.
  sub ConfigDirectory
 -    {  return NaturalDocs::File->JoinPaths($FindBin::RealBin, 'Config', 1);  };
-+    {  return NaturalDocs::File->JoinPaths('/usr/share/NaturalDocs', 'Config', 1);  };
++    {  return '/etc/NaturalDocs'; };
  
  # Function: DocumentedOnly
  # Returns whether undocumented code aspects should be included in the output.
---- NaturalDocs-1.35/NaturalDocs.orig	2005-04-14 18:24:35.000000000 +0200
-+++ NaturalDocs-1.35/NaturalDocs	2005-04-14 18:24:55.000000000 +0200
-@@ -66,7 +66,6 @@
- use English '-no_match_vars';
- 
- use FindBin;
--use lib "$FindBin::RealBin/Modules";
- 
- sub INIT
-     {
