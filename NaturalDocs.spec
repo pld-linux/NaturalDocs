@@ -1,14 +1,13 @@
 %include	/usr/lib/rpm/macros.perl
-%define		ver		1.4
 Summary:	Multi-language documentation generator
 Summary(pl.UTF-8):	Wielojęzykowy generator dokumentacji
 Name:		NaturalDocs
-Version:	1.40
+Version:	1.52
 Release:	1
 License:	GPL
 Group:		Applications
-Source0:	http://downloads.sourceforge.net/naturaldocs/%{name}-%{ver}.zip
-# Source0-md5:	05a9a2a392bd3d6d44d1576e624ba74a
+Source0:	http://downloads.sourceforge.net/naturaldocs/%{name}-%{version}.zip
+# Source0-md5:	68e3982acae57b6befdf9e75b420fd80
 Patch0:		%{name}-path.patch
 URL:		http://www.naturaldocs.org/
 BuildRequires:	iconv
