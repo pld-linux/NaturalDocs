@@ -1,4 +1,3 @@
-%include	/usr/lib/rpm/macros.perl
 Summary:	Multi-language documentation generator
 Summary(pl.UTF-8):	Wielojęzykowy generator dokumentacji
 Name:		NaturalDocs
